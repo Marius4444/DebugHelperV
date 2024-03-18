@@ -1,7 +1,10 @@
 # tests/test_core.py
-import pytest
+# test_core.py
+
 from unittest.mock import patch
-from Core import show_menu
+
+from core import show_menu
+
 
 def test_show_menu_main():
   # Mock input to return '1' and capture print statements
