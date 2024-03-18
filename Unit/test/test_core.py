@@ -3,7 +3,7 @@
 
 from unittest.mock import patch
 
-from core import show_menu
+from unit.core import show_menu
 
 
 def test_show_menu_main():
