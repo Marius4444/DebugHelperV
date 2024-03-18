@@ -12,7 +12,7 @@ menus = {
     }
   },
   "documents": {
-    "prompt": "Please select an option to open a specific document:",
+    "prompt": "Please select an option to open a specific document, or return to the main menu:",
     "options": {
       "1": "Open Datasheets",
       "2": "Open PTI",
@@ -20,19 +20,18 @@ menus = {
       "4": "Open assembly instructions",
       "5": "Open Schematic for KDD",
       "6": "Open Schematic for KDM",
+      "0": "Return to Main Menu",  # Added return option
     }
   }
 }
 
-
 def show_menu(menu_key):
   menu = menus[menu_key]
-  print(menu["prompt"])
+  print("\n" + menu["prompt"])
   for key, value in menu["options"].items():
     print(f"{key}) {value}")
   choice = input("Enter your choice: ")
   return choice
-
 
 def open_document(doc_choice):
   actions = {
@@ -42,23 +41,27 @@ def open_document(doc_choice):
     "4": "Assembly instructions opened.",
     "5": "Schematic for KDD opened.",
     "6": "Schematic for KDM opened.",
-
   }
-  print(actions.get(doc_choice, "Invalid choice, returning to main menu."))
-
+  # Handle return to main menu
+  if doc_choice == "0":
+    return True
+  else:
+    print(actions.get(doc_choice, "Invalid choice."))
+    return False
 
 def main():
-  # Show main menu
-  module_choice = show_menu("main")
-  if module_choice in menus["main"]["options"]:
-    print(f"You have chosen {menus['main']['options'][module_choice]}")
-
-    # Show documents menu
-    doc_choice = show_menu("documents")
-    open_document(doc_choice)
-  else:
-    print("Invalid choice, please try again.")
-
+  while True:
+    # Show main menu
+    module_choice = show_menu("main")
+    if module_choice in menus["main"]["options"]:
+      print(f"You have chosen {menus['main']['options'][module_choice]}")
+      while True:
+        # Show documents menu
+        doc_choice = show_menu("documents")
+        if open_document(doc_choice):
+          break
+    else:
+      print("Invalid choice, please try again.")
 
 if __name__ == "__main__":
   main()
