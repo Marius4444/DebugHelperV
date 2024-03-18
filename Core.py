@@ -19,6 +19,7 @@ menus = {
       "3": "Open PTR",
       "4": "Open assembly instructions",
       "5": "Open Schematic for KDD",
+      "6": "Open Schematic for KDM",
     }
   }
 }
@@ -40,6 +41,7 @@ def open_document(doc_choice):
     "3": "PTR document opened.",
     "4": "Assembly instructions opened.",
     "5": "Schematic for KDD opened.",
+    "6": "Schematic for KDM opened.",
 
   }
   print(actions.get(doc_choice, "Invalid choice, returning to main menu."))
