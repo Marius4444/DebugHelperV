@@ -1,6 +1,5 @@
-# tests/test_core.py
-# test_core.py
 import sys
+sys.path.append('path/to/your/module')
 from unittest.mock import patch
 
 from unit.core import show_menu
