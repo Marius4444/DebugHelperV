@@ -1,7 +1,7 @@
 
 menus = {
   "main": {
-    "prompt": "Welcome to the Debug Helper. Please choose the module as fallow  A",
+    "prompt": "Welcome  to tSShe Debug Helper. Please choose the module as fallow  A",
     "options": {
       "1": "KAD/ADC/109/C/S1/03",
       "2": "KAD/ADC/114/1V/02",
