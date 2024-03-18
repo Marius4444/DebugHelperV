@@ -1,26 +1,4 @@
-name: Python CI with Coveralls
-
-on: [push, pull_request]
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.9.13'  # Adjust the version as needed
-
-      - name: Install dependencies
-        run: pip install -r requirements.txt
-
-      - name: Run pytest with coverage
-        run: |
-          pip install coverage
-          coverage run --source=C:\Users\Marius\Documents\GitHub\DebugHelperV  name: Python CI
+name: Python CI
 
 on:
   push:
@@ -53,10 +31,3 @@ jobs:
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1
       # No token required for public repos
-
-          coverage report
-
-      - name: Upload coverage to Coveralls
-        run: coveralls
-        env:
-          COVERALLS_REPO_TOKEN: ${{ COVERALLS_REPO_TOKEN=ySD7r4IWSdWBkkZxZgF5SjGXDqeKz0ayL }}  # This is needed for private repos
