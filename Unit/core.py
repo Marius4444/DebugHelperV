@@ -61,7 +61,7 @@ def main():
         if open_document(doc_choice):
           break
     else:
-      print("Invalid choice, please try again later on and back back back")
+      print("Invalid choice, please try again later on  and back back back")
 
 if __name__ == "__main__":
   main()
