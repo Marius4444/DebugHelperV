@@ -1,4 +1,4 @@
-
+import sys
 menus = {
   "main": {
     "prompt": "Welcome to the Debug Helper. Please choose the module as fallow ",
