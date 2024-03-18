@@ -1,2 +1,2 @@
-coveralls
-# Add other dependencies here, one per line
+pytest
+pytest-cov
