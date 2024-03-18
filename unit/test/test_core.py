@@ -1,6 +1,6 @@
 # tests/test_core.py
 # test_core.py
-
+import sys
 from unittest.mock import patch
 
 from unit.core import show_menu
