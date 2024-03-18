@@ -1,34 +1,62 @@
-name: Python application test and coverage
+name: Python CI with Coveralls
 
 on: [push, pull_request]
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
-    
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9.13'  # Adjust the version as needed
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run pytest with coverage
+        run: |
+          pip install coverage
+          coverage run --source=C:\Users\Marius\Documents\GitHub\DebugHelperV  name: Python CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.9]
+
     steps:
     - uses: actions/checkout@v2
-    
-    - name: Set up Python
+    - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v2
       with:
-        python-version: '3.9' # Adjust this line to use your desired Python version
-    
+        python-version: ${{ matrix.python-version }}
+
     - name: Install dependencies
-      run: pip install -r requirements.txt
-    
-    - name: Run pytest with coverage
       run: |
-        pip install coverage
-        pip install coveralls
-        coverage run -m pytest
-        coverage report
-    
-    - name: Coveralls
-      uses: coverallsapp/github-action@master
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        path-to-lcov: ./coverage.xml # Ensure your coverage tool generates a coverage report at this location
-        flag-name: run-${{ matrix.os }}-py${{ matrix.python-version }}
-        parallel: true
-        parallel-finished: true
+        pip install -r requirements.txt
+        pip install pytest pytest-cov
+
+    - name: Run tests with coverage
+      run: pytest --cov=./ --cov-report=xml
+
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v1
+      # No token required for public repos
+
+          coverage report
+
+      - name: Upload coverage to Coveralls
+        run: coveralls
+        env:
+          COVERALLS_REPO_TOKEN: ${{ COVERALLS_REPO_TOKEN=ySD7r4IWSdWBkkZxZgF5SjGXDqeKz0ayL }}  # This is needed for private repos
