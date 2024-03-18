@@ -2,7 +2,7 @@ import sys
 sys.path.append('path/to/your/module')
 from unittest.mock import patch
 
-from unit.core import show_menu
+from core import show_menu
 
 
 def test_show_menu_main():
