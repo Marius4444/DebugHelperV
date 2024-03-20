@@ -1,4 +1,3 @@
-import sys
 menus = {
   "main": {
     "prompt": "Welcome to the Debug Helper. Please choose the module as fallow ",
@@ -20,10 +19,11 @@ menus = {
       "4": "Open assembly instructions",
       "5": "Open Schematic for KDD",
       "6": "Open Schematic for KDM",
-      "0": "Return to Main Menu",  # Added return option
+      "0": "Return to Main Menu",
     }
   }
 }
+
 
 def show_menu(menu_key):
   menu = menus[menu_key]
@@ -32,6 +32,7 @@ def show_menu(menu_key):
     print(f"{key}) {value}")
   choice = input("Enter your choice: ")
   return choice
+
 
 def open_document(doc_choice):
   actions = {
@@ -49,6 +50,7 @@ def open_document(doc_choice):
     print(actions.get(doc_choice, "Invalid choice."))
     return False
 
+
 def main():
   while True:
     # Show main menu
@@ -62,6 +64,7 @@ def main():
           break
     else:
       print("Invalid choice, please try again later on  and back back back")
+
 
 if __name__ == "__main__":
   main()
