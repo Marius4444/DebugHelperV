@@ -11,7 +11,8 @@ menus = {
     }
   },
   "documents": {
-    "prompt": "Please select an option to open a specific document, or return to the main menu:",
+    "prompt": "Please select an option to open a specific document, "
+              "or return to the main menu:",
     "options": {
       "1": "Open Datasheets",
       "2": "Open PTI",
